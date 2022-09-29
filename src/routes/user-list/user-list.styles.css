@@ -1,0 +1,27 @@
+.user-list-container {
+  width: 100vh;
+  height: 100vh;
+}
+
+h1 {
+  font-size: 20px;
+  padding: 20px 0;
+  text-align: center;
+  color: #000;
+}
+.user-list-container {
+  width: 80vw;
+  height: auto;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  transition: all 0.2 linear;
+}
+.child {
+  height: 200px;
+  background: #81ecec;
+  box-shadow: 0 0 20px #bac3c3;
+  flex: 1 1 200px;
+  margin: 20px;
+}

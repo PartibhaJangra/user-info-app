@@ -1,0 +1,16 @@
+table,
+th,
+tr,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.user-list-table {
+  top: 300px;
+}
+
+.user-list-table-container {
+  display: flex;
+  justify-content: center;
+}

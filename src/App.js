@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import UserList from "./routes/user-list/user-list.component";
+
+import { setUserList } from "./store/user-list/user-list.action";
+
+import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  const fetchUserData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const userData = await response.json();
+      return userData.data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const userData = fetchUserData("https://reqres.in/api/users");
+    userData.then((resp) => dispatch(setUserList(resp)));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route index element={<UserList />}></Route>
+      </Routes>
     </div>
   );
 }
